@@ -53,6 +53,59 @@ COUNT(temperature) AS 'count_temp'
 FROM dataset_1
 GROUP BY weather;
 
+SELECT weather, 
+MAX(temperature) AS 'max_temp'
+FROM dataset_1
+GROUP BY weather;
+
+SELECT occupation
+FROM dataset_1
+GROUP BY occupation
+HAVING occupation = 'Student';
+
+SELECT * 
+FROM dataset_1
+UNION 
+SELECT * 
+FROM table_to_union
+
+SELECT DISTINCT destination
+FROM (
+SELECT * 
+FROM dataset_1
+UNION 
+SELECT * 
+FROM table_to_union);
+
+SELECT destination, passanger
+FROM (SELECT * FROM dataset_1 WHERE passanger = 'Alone');
+
+SELECT *
+FROM dataset_1
+WHERE weather LIKE 'Sun%';
+
+SELECT occupation
+FROM dataset_1
+WHERE occupation IN ('Sales & Related', 'Management');
+
+SELECT 
+	destination, 
+	weather, 
+	AVG(temperature) OVER (PARTITION BY weather) AS 'avg_temp_by_weather'
+FROM dataset_1;
+
+SELECT 
+	destination, 
+	weather, 
+	ROW_NUMBER() OVER (PARTITION BY weather ORDER BY destination) AS 'avg_temp_by_weather'
+FROM dataset_1;
+
+SELECT 
+	destination, 
+	weather, 
+	RANK() OVER (PARTITION BY weather ORDER BY destination) AS 'avg_temp_by_weather'
+FROM dataset_1;
+
 
 
 
