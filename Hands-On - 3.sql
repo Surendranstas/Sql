@@ -39,6 +39,20 @@ FROM dataset_1
 Group By passanger 
 ;
 
+SELECT occupation
+FROM dataset_1
+GROUP BY occupation;
+
+SELECT weather, 
+AVG(temperature) AS 'avg_temp'
+FROM dataset_1
+GROUP BY weather;
+
+SELECT weather, 
+COUNT(temperature) AS 'count_temp'
+FROM dataset_1
+GROUP BY weather;
+
 
 
 
